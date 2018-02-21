@@ -4,6 +4,22 @@ import PropTypes from 'prop-types';
 import './media.sass';
 
 class Media extends Component {
+  // Esto es con es2015 o es6
+  // constructor(props) {
+  //   super(props);
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+
+  // handleClick(event) {
+  //   console.log(this.props.title);
+  // }
+
+  // Se puede hacer con arrow function y esto es gracias a stage-2 que me trae caracteristicas de es7
+  handleClick = (event) => {
+    console.log(this.props.title);
+  }
+  // Documentación: https://reactjs.org/docs/handling-events.html
+
   render() {
     const styles = {
       container: {
@@ -15,7 +31,7 @@ class Media extends Component {
       }
     }
     return (
-      <div className="Media">
+      <div className="Media" onClick={this.handleClick}>
         <div className="Media-cover">
           <img className="Media-image" src={this.props.image} alt="" width={260} height={160} />
           <h3 className="Media-title">{this.props.title}</h3>
@@ -25,6 +41,11 @@ class Media extends Component {
     )
   }
 }
+
+// Specifies the default values for props:
+Media.defaultProps = {
+  author: '@jandrey15'
+};
 
 // validamos que tipo de datos son los que me van a llegar.
 // types: string, number, object, func, array
