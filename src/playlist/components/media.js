@@ -4,19 +4,32 @@ import PropTypes from 'prop-types';
 import './media.sass';
 
 class Media extends Component {
+  /*
+  // Esto es con es7
+  state = {
+    author: 'John Serrano'
+  }
+  */
   // Esto es con es2015 o es6
-  // constructor(props) {
-  //   super(props);
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      author: props.author,
+    }
+    // this.handleClick = this.handleClick.bind(this);
+  }
 
+  // Esto es con es2015 o es6
   // handleClick(event) {
   //   console.log(this.props.title);
   // }
 
   // Se puede hacer con arrow function y esto es gracias a stage-2 que me trae caracteristicas de es7
   handleClick = (event) => {
-    console.log(this.props.title);
+    // console.log(this.state.author);
+    this.setState({
+      author: '@jandrey15',
+    });
   }
   // Documentación: https://reactjs.org/docs/handling-events.html
 
@@ -35,7 +48,7 @@ class Media extends Component {
         <div className="Media-cover">
           <img className="Media-image" src={this.props.image} alt="" width={260} height={160} />
           <h3 className="Media-title">{this.props.title}</h3>
-          <p className="Media-author">{this.props.author}</p>
+          <p className="Media-author">{this.state.author}</p>
         </div>
       </div>
     )
