@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import PlayList from './playlist/components/playlist';
 import data from './api.json';
+import './app.sass';
 
 const app = document.getElementById('app');
 // const holaMundo = <h1>Hola mundo React :)</h1>;

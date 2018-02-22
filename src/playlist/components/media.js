@@ -1,9 +1,16 @@
 // import React from 'react';
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import './media.sass';
 
-class Media extends Component {
+// Leer sobre los pureComponent
+/*
+  PureComponent es decir; 
+  si recibe nuevas propiedades pero son las que ya teniamos,
+  no se re-renderiza nuestro Component
+*/
+class Media extends PureComponent {
   /*
   // Esto es con es7
   state = {
