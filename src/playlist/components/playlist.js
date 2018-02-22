@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import Media from './media.js';
 import './playlist.sass';
-import Play from '../../icons/components/play';
-import Pausa from '../../icons/components/pausa';
-import Volumen from '../../icons/components/volumen';
-import Full from '../../icons/components/full';
+// import Play from '../../icons/components/play';
+// import Pausa from '../../icons/components/pausa';
+// import Volumen from '../../icons/components/volumen';
+// import Full from '../../icons/components/full';
 
 // Un component funcional no tiene ciclo de vida
 function PlayList(props) {
-  const playlist = props.data.categories[0].playlist;
-  const playlist_2 = props.data.categories[1].playlist;
-  console.log(props.data);
+  // const playlist = props.data.categories[0].playlist;
+  // const playlist_2 = props.data.categories[1].playlist;
+  // console.log(props.data);
   return (
     <div>
-      <Play 
+     {/* <Play 
         size={50}
         color="red"
       />
@@ -28,18 +28,10 @@ function PlayList(props) {
       <Full 
         size={50}
         color="red"
-      />
+      />*/}
       <section className="Playlist">
         {
-          playlist.map((item) => {
-            // return <Media title={item.title} key={item.id} />
-            return <Media {...item} key={item.id} />
-          })
-        }
-      </section>
-      <section className="Playlist">
-        {
-          playlist_2.map((item) => {
+          props.playlist.map((item) => {
             // return <Media title={item.title} key={item.id} />
             return <Media {...item} key={item.id} />
           })
