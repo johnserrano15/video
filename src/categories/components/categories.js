@@ -1,9 +1,10 @@
 import React from 'react';
 import Category from './category';
+import './categories.sass';
 
 function Categories(props) {
   return (
-    <div>
+    <div className="Categories">
       {
         props.categories.map((item) => {
           return <Category key={item.id} {...item}/>
