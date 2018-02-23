@@ -33,7 +33,13 @@ function PlayList(props) {
         {
           props.playlist.map((item) => {
             // return <Media title={item.title} key={item.id} />
-            return <Media {...item} key={item.id} />
+            return (
+              <Media 
+                {...item} 
+                key={item.id}
+                handleClick={props.handleOpenModal}
+              />
+            )
           })
         }
       </section>

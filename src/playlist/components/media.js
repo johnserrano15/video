@@ -32,12 +32,12 @@ class Media extends PureComponent {
   // }
 
   // Se puede hacer con arrow function y esto es gracias a stage-2 que me trae caracteristicas de es7
-  handleClick = (event) => {
-    // console.log(this.state.author);
-    this.setState({
-      author: '@jandrey15',
-    });
-  }
+  // handleClick = (event) => {
+  //   // console.log(this.state.author);
+  //   this.setState({
+  //     author: '@jandrey15',
+  //   });
+  // }
   // Documentación: https://reactjs.org/docs/handling-events.html
 
   render() {
@@ -51,7 +51,7 @@ class Media extends PureComponent {
       }
     }
     return (
-      <div className="Media" onClick={this.handleClick}>
+      <div className="Media" onClick={this.props.handleClick}>
         <div className="Media-cover">
           <img className="Media-image" src={this.props.cover} alt="" width={260} height={160} />
           <h3 className="Media-title">{this.props.title}</h3>
