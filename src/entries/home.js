@@ -6,8 +6,8 @@ import Home from '../pages/containers/home';
 import data from '../api.json';
 // import './app.sass';
 
-const app = document.getElementById('app');
+const homeContainer = document.getElementById('home-container');
 // const holaMundo = <h1>Hola mundo React :)</h1>;
 
-// ReactDOM.render(<Media />, app);
-render(<Home data={data} />, app);
+// ReactDOM.render(<Media />, homeContainer);
+render(<Home data={data} />, homeContainer);
