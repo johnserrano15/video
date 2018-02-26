@@ -24,13 +24,23 @@ class Video extends Component {
     this.video = element;
   }
 
+  /*
+    Todos los eventos:
+    https://reactjs.org/docs/events.html
+  */
+
   render() {
+    const {
+      handleLoadedMetadata,
+    } = this.props;
+    
     return (
       <VideoLayout>
         <video
           autoPlay={this.props.autoplay}
           src={this.props.src}
           ref={this.setRef}
+          onLoadedMetadata={handleLoadedMetadata}
         />
       </VideoLayout>
     )
