@@ -8,12 +8,20 @@ import './search.sass';
 }*/
 
 // Con los parentices en ves de llaves no necesitamos hacer un return
-const Search = () => (
-  <form className="Search">
-    <input 
+const Search = (props) => (
+  <form 
+    className="Search"
+    onSubmit={props.handleSubmit}
+  >
+    <input
+      ref={props.setRef}
       type="text"
       placeholder="Busca tu video favorito"
       className="Search-input"
+      name="search"
+      onChange={props.handleChange}
+      value={props.value}
+      // defaultValue="David guetta"
     />
   </form>
 )
