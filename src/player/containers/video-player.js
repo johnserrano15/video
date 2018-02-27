@@ -12,6 +12,7 @@ class VideoPlayer extends Component {
     this.state = {
       pause: true,
       duration: 0,
+      currentTime: 0,
     }
   }
 
@@ -19,6 +20,19 @@ class VideoPlayer extends Component {
     this.setState({
       pause: !this.state.pause
     })
+  }
+
+  leftpad(number) {
+    const pad = '00';
+    // la funcion hace toma 00, 0 + 1 = 01 todo en string
+    // desde el 0 hasta el 1 o 0 al 0 dependiendo del number si bine 1 al 9 o ya 10.. 
+    return pad.substring(0, pad.length - number.length) + number;
+  }
+
+  formattedTime(secs) {
+    const minutes = parseInt(secs / 10, 10);
+    const seconds = parseInt(secs % 10, 10);
+    return `${minutes} : ${this.leftpad(seconds.toString())}`
   }
 
   componentDidMount() {
@@ -30,7 +44,13 @@ class VideoPlayer extends Component {
   handleLoadedMetadata = (event) => {
     this.video = event.target; // selecciona todo el element
     this.setState({
-      duration: this.video.duration
+      duration: this.formattedTime(this.video.duration)
+    })
+  }
+
+  handleTimeUpdate = (event) => {
+    this.setState({
+      currentTime: this.formattedTime(this.video.currentTime)
     })
   }
 
@@ -47,10 +67,12 @@ class VideoPlayer extends Component {
           />
           <Timer 
             duration={this.state.duration}
+            currentTime={this.state.currentTime}
           />
         </Controls>
         <Video
           handleLoadedMetadata={this.handleLoadedMetadata}
+          handleTimeUpdate={this.handleTimeUpdate}
           autoplay={this.props.autoplay}
           pause={this.state.pause}
           src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
