@@ -119,7 +119,7 @@ class VideoPlayer extends Component {
         setRef={this.setRef}
       >
         <Title 
-          title="Video"
+          title={this.props.title}
         />
         <Controls>
           <PlayPausa
@@ -152,7 +152,7 @@ class VideoPlayer extends Component {
           handleSeeked={this.handleSeeked}
           autoplay={this.props.autoplay}
           pause={this.state.pause}
-          src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
+          src={this.props.src}
         />
       </VideoPlayerLayout>
     )
