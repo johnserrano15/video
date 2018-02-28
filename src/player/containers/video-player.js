@@ -6,6 +6,8 @@ import PlayPausa from '../components/play-pausa';
 import Timer from '../components/timer';
 import Controls from '../components/video-player-controls';
 import ProgressBar from '../components/progress-bar';
+import Spinner from '../components/spinner';
+import Volumen from '../components/volumen';
 
 class VideoPlayer extends Component {
   constructor(props) {
@@ -16,6 +18,9 @@ class VideoPlayer extends Component {
       currentTime: 0,
       currentTimeProgress: 0,
       durationProgress: 0,
+      loading: false,
+      volume: 1,
+      lastVolume: 0,
     }
   }
 
@@ -64,6 +69,36 @@ class VideoPlayer extends Component {
     this.video.currentTime = event.target.value
   }
 
+  handleSeeking = (event) => {
+    this.setState({
+      loading: true
+    });
+  }
+
+  handleSeeked = (event) => {
+    this.setState({
+      loading: false
+    });
+  }
+
+  handleVolumeChange = (event) => {
+    this.video.volume = event.target.value;
+    this.setState({
+      volume: this.video.volume
+    })
+  }
+
+  handleVolumeMute = (event) => {
+    // this.video.volume = 0;
+    // console.log(this.state.volume)
+
+    this.state.volume >= 0.1 ? this.video.volume = 0 : this.video.volume = this.state.lastVolume;
+    this.setState({
+      volume: this.video.volume,
+      lastVolume: this.state.volume
+    })
+  }
+
   render() {
     return (
       <VideoPlayerLayout>
@@ -84,10 +119,18 @@ class VideoPlayer extends Component {
             value={this.state.currentTimeProgress}
             handleProgressChange={this.handleProgressChange}
           />
+          <Volumen 
+            handleVolumeChange={this.handleVolumeChange}
+            handleVolumeMute={this.handleVolumeMute}
+            value={this.state.volume}
+          />
         </Controls>
+        <Spinner active={this.state.loading}/>
         <Video
           handleLoadedMetadata={this.handleLoadedMetadata}
           handleTimeUpdate={this.handleTimeUpdate}
+          handleSeeking={this.handleSeeking}
+          handleSeeked={this.handleSeeked}
           autoplay={this.props.autoplay}
           pause={this.state.pause}
           src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
