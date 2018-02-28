@@ -5,6 +5,7 @@ import Title from '../components/title';
 import PlayPausa from '../components/play-pausa';
 import Timer from '../components/timer';
 import Controls from '../components/video-player-controls';
+import ProgressBar from '../components/progress-bar';
 
 class VideoPlayer extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class VideoPlayer extends Component {
       pause: true,
       duration: 0,
       currentTime: 0,
+      currentTimeProgress: 0,
+      durationProgress: 0,
     }
   }
 
@@ -30,8 +33,8 @@ class VideoPlayer extends Component {
   }
 
   formattedTime(secs) {
-    const minutes = parseInt(secs / 10, 10);
-    const seconds = parseInt(secs % 10, 10);
+    const minutes = parseInt(secs / 60, 10);
+    const seconds = parseInt(secs % 60, 10);
     return `${minutes} : ${this.leftpad(seconds.toString())}`
   }
 
@@ -44,14 +47,21 @@ class VideoPlayer extends Component {
   handleLoadedMetadata = (event) => {
     this.video = event.target; // selecciona todo el element
     this.setState({
-      duration: this.formattedTime(this.video.duration)
+      duration: this.formattedTime(this.video.duration),
+      durationProgress: this.video.duration
     })
   }
 
   handleTimeUpdate = (event) => {
     this.setState({
-      currentTime: this.formattedTime(this.video.currentTime)
+      currentTime: this.formattedTime(this.video.currentTime),
+      currentTimeProgress: this.video.currentTime
     })
+  }
+
+  handleProgressChange = (event) => {
+    // event.target.value
+    this.video.currentTime = event.target.value
   }
 
   render() {
@@ -68,6 +78,11 @@ class VideoPlayer extends Component {
           <Timer 
             duration={this.state.duration}
             currentTime={this.state.currentTime}
+          />
+          <ProgressBar 
+            duration={this.state.durationProgress}
+            value={this.state.currentTimeProgress}
+            handleProgressChange={this.handleProgressChange}
           />
         </Controls>
         <Video

@@ -34,7 +34,7 @@ class Video extends Component {
       handleLoadedMetadata,
       handleTimeUpdate,
     } = this.props;
-    
+    console.log(handleLoadedMetadata)
     return (
       <VideoLayout>
         <video
