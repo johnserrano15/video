@@ -1,4 +1,4 @@
-console.log('Hola mundo redux');
+// console.log('Hola mundo redux');
 import { createStore } from 'redux';
 
 const $form = document.getElementById('form');
@@ -9,6 +9,13 @@ function handleSubmit (event) {
   const data = new FormData($form);
   const title = data.get('title');
   console.log(title);
+  store.dispatch({
+    type: 'ADD_SONG',
+    payload: {
+      // title: title,
+      title, // Se envia como un objeto para futuros campos agregados al form
+    } // Optional
+  })
 }
 
 const initialState = [
@@ -40,9 +47,11 @@ const store = createStore(
 
 const $container = document.getElementById('playlist');
 const playlist = store.getState();
+
 playlist.forEach((item) => {
   const template = document.createElement('p');
   template.textContent = item.title;
   $container.appendChild(template);
-})
+});
+
 console.log(store.getState());
