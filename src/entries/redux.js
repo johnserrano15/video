@@ -1,4 +1,4 @@
-// console.log('Hola mundo redux');
+console.log('Hola mundo redux');
 import { createStore } from 'redux';
 
 const $form = document.getElementById('form');
@@ -26,11 +26,23 @@ const initialState = [
 /*const store = createStore(
   reducer,
   initialState,
-  enhancer
+  enhancer // solo se usa para desarrollo quitar para producción
 )*/
+
+// https://github.com/zalmoxisus/redux-devtools-extension
 
 const store = createStore(
   (state) => state,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+
+const $container = document.getElementById('playlist');
+const playlist = store.getState();
+playlist.forEach((item) => {
+  const template = document.createElement('p');
+  template.textContent = item.title;
+  $container.appendChild(template);
+})
+console.log(store.getState());
