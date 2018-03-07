@@ -10,6 +10,7 @@ function handleSubmit (event) {
   const data = new FormData($form);
   const title = data.get('title');
   console.log(title);
+  // console.log(this.title.value)
   // console.log(event)
   // event.target.title.value = ''
   event.target.reset();

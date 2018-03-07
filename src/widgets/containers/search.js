@@ -12,11 +12,12 @@ class SearchContainer extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.input.value, 'submit');
+    console.log(this.input.value);
     // Aca se puede enviar todos los datos con un post
   }
 
   setInputref = (element) => {
-    this.input = element;
+    this.input = element; // muy inportante la referencia a nuestro element
   }
 
   handleInputChange = (event) => {
