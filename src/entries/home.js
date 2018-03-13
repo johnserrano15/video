@@ -6,6 +6,7 @@ import Home from '../pages/containers/home';
 import data from '../api.json';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import reducer from '../reducers/data';
 // import './app.sass';
 
 const initialState = {
@@ -16,7 +17,7 @@ const initialState = {
 }
 
 const store = createStore(
-  (state) => state,
+  reducer,
   initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
