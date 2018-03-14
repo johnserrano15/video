@@ -11,7 +11,8 @@ import reducer from '../reducers/data';
 
 const initialState = {
   data: {
-    ...data
+    ...data,
+    search: [],
   }
   // mas info de los spread operator -> http://www.etnassoft.com/2014/06/03/el-operador-de-propagacion-en-javascript-ecmascript-6-y-polyfill/
 }
