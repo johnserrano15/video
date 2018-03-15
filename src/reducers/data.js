@@ -2,10 +2,29 @@ function data(state, action) {
   switch (action.type) {
     case 'SEARCH_VIDEO': {
       // action.payload.query;
-      const list = state.data.categories[2].playlist;
+      /*const list = state.data.categories[2].playlist;
       const results = list.filter((item) => {
+        console.log(item);
         return item.author.includes(action.payload.query)
       });
+      console.log(results)*/
+      const results = [];
+
+      state.data.categories.map((category) => {
+        // console.log(category)
+        category.playlist.filter((item) => {
+          // console.log(item);
+          const author = item.author.toLowerCase();
+          const query = action.payload.query.toLowerCase();
+          if(author.includes(query)) {
+            // console.log(item);
+            results.push(item);
+          }
+          // return author.includes(query);
+          // return item.author.includes(action.payload.query)
+        });
+      });
+
       return {
         ...state,
         search: results
