@@ -15,7 +15,7 @@ const category = new schema.Entity('categories', {
 
 // No siempre los datos vienen en array pueden venir en objects
 const categories = { categories: new schema.Array(category)}
-
+// Indicamos categories que es el array de nuestra data 
 const normalizedData = normalize(api, categories);
 
 export default normalizedData;

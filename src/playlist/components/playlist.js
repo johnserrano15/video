@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Media from './media.js';
+import MediaContainer from '../containers/media';
 import './playlist.sass';
 // import Play from '../../icons/components/play';
 // import Pausa from '../../icons/components/pausa';
@@ -31,12 +31,12 @@ function PlayList(props) {
       />*/}
       <section className="Playlist">
         {
-          props.playlist.map((item) => {
+          props.playlist.map((mediaId) => {
             // return <Media title={item.title} key={item.id} />
             return (
-              <Media 
-                {...item} 
-                key={item.id}
+              <MediaContainer 
+                id={mediaId}
+                key={mediaId}
                 openModal={props.handleOpenModal}
               />
             )

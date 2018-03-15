@@ -3,19 +3,21 @@ import React from 'react';
 import { render } from 'react-dom';
 import Home from '../pages/containers/home';
 // import PlayList from '../playlist/components/playlist';
-import data from '../api.json';
-import normalizedData from '../schemas/index';
+// import data from '../api.json';
+import data from '../schemas/index';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from '../reducers/data';
 // import './app.sass';
 
-console.log(normalizedData);
-console.log(data);
+// console.log(normalizedData);
+// console.log(data);
 
 const initialState = {
   data: {
-    ...data,
+    // ...data,
+    entities: data.entities,
+    categories: data.result.categories,
   },
   search: [],
   // mas info de los spread operator -> http://www.etnassoft.com/2014/06/03/el-operador-de-propagacion-en-javascript-ecmascript-6-y-polyfill/
