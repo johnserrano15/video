@@ -4,10 +4,14 @@ import { render } from 'react-dom';
 import Home from '../pages/containers/home';
 // import PlayList from '../playlist/components/playlist';
 import data from '../api.json';
+import normalizedData from '../schemas/index';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducer from '../reducers/data';
 // import './app.sass';
+
+console.log(normalizedData);
+console.log(data);
 
 const initialState = {
   data: {
