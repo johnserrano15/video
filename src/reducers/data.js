@@ -10,20 +10,22 @@ function data(state, action) {
       console.log(results)*/
       const results = [];
 
-      state.data.categories.map((category) => {
-        // console.log(category)
-        category.playlist.filter((item) => {
-          // console.log(item);
-          const author = item.author.toLowerCase();
-          const query = action.payload.query.toLowerCase();
-          if(author.includes(query)) {
+      if(action.payload.query) {
+        state.data.categories.map((category) => {
+          // console.log(category)
+          category.playlist.filter((item) => {
             // console.log(item);
-            results.push(item);
-          }
-          // return author.includes(query);
-          // return item.author.includes(action.payload.query)
+            const author = item.author.toLowerCase();
+            const query = action.payload.query.toLowerCase();
+            if(author.includes(query)) {
+              // console.log(item);
+              results.push(item);
+            }
+            // return author.includes(query);
+            // return item.author.includes(action.payload.query)
+          });
         });
-      });
+      }
 
       return {
         ...state,
