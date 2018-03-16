@@ -1,10 +1,12 @@
 import schema from '../schemas/index';
+import { fromJS } from 'immutable';
 // SE ESTA USANDO DE ESTA FORMA PORQUE SON DOS REDUCERS
-const initialState = {
+const initialState = fromJS({
   entities: schema.entities,
   categories: schema.result.categories,
-  search: [],
-}
+  // search: [],
+  search: '',
+});
 
 function data(state=initialState, action) {
   switch (action.type) {
@@ -16,7 +18,7 @@ function data(state=initialState, action) {
         return item.author.includes(action.payload.query)
       });
       console.log(results)*/
-      const results = [];
+      /*const results = [];
 
       if(action.payload.query) {
         state.data.categories.map((category) => {
@@ -38,7 +40,8 @@ function data(state=initialState, action) {
       return {
         ...state,
         search: results
-      }
+      }*/
+      return state.set('search', action.payload.query)
     }
     default:
       return state

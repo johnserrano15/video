@@ -10,15 +10,26 @@ function Categories(props) {
       <Search />
       {
         props.search.map((item) => {
-          return <Media {...item} key={item.id} />
+          // return <Media {...item} key={item.id} />
+          return (
+            <Media 
+              title={item.get('title')}
+              author={item.get('author')}
+              type={item.get('type')}
+              cover={item.get('cover')}
+              src={item.get('src')}
+              id={item.get('id')}
+              key={item.get('id')} 
+            />
+          )
         })
       }
       {
         props.categories.map((item) => {
           return (
             <Category 
-              key={item.id} 
-              {...item}
+              key={item.get('id')} 
+              {...item.toJS()} // se recomienda pasar los datos uno por uno cuando son immutables y no toJS()
               handleOpenModal={props.handleOpenModal}
             />
           )
