@@ -1,4 +1,12 @@
-function data(state, action) {
+import schema from '../schemas/index';
+// SE ESTA USANDO DE ESTA FORMA PORQUE SON DOS REDUCERS
+const initialState = {
+  entities: schema.entities,
+  categories: schema.result.categories,
+  search: [],
+}
+
+function data(state=initialState, action) {
   switch (action.type) {
     case 'SEARCH_VIDEO': {
       // action.payload.query;
