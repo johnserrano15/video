@@ -41,7 +41,7 @@ class Media extends PureComponent {
   // Documentación: https://reactjs.org/docs/handling-events.html
 
   handleClick = (event) => {
-    this.props.openModal(this.props);
+    this.props.openModal(this.props.id);
   }
   render() {
     const styles = {

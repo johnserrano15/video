@@ -12,7 +12,8 @@ function Categories(props) {
         props.search.map((item) => {
           // return <Media {...item} key={item.id} />
           return (
-            <Media 
+            <Media
+              openModal={props.handleOpenModal}
               title={item.get('title')}
               author={item.get('author')}
               type={item.get('type')}
