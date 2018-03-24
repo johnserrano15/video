@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from '../components/search';
 import { connect } from 'react-redux';
 import { searchVideo } from '../../actions/index';
+// import { bindActionCreators } from 'redux'
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class SearchContainer extends Component {
     event.preventDefault();
     // console.log(this.input.value, 'submit');
     // console.log(this.input.value);
-    this.props.dispatch(searchVideo(this.input.value))
+    // this.props.dispatch(searchVideo(this.input.value))
+    this.props.searchVideo(this.input.value)
     // Aca se puede enviar todos los datos con un post
   }
 
@@ -41,5 +43,16 @@ class SearchContainer extends Component {
   }
 }
 
+/*function mapDispatchToProps(dispatch) {
+  return {
+    // actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
+  }
+}*/
+
+const mapDispatchToProps = {
+  searchVideo,
+}
+
 // Se recomienda usar connect dentro de los components de tipo containers
-export default connect()(SearchContainer);
+export default connect(null, mapDispatchToProps)(SearchContainer);

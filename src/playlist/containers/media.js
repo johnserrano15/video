@@ -6,7 +6,8 @@ import { openModal } from '../../actions/index';
 
 class MediaContainer extends Component {
   openModal = (id) => {
-    this.props.dispatch(openModal(id))
+    // this.props.dispatch(openModal(id))
+    this.props.openModal(id)
   }
 
   render() {
@@ -20,4 +21,8 @@ function mapStateToProps(state, props) {
   }
 }
 
-export default connect(mapStateToProps)(MediaContainer);
+const mapDispatchToProps = {
+  openModal,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MediaContainer);
