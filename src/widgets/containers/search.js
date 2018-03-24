@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from '../components/search';
 import { connect } from 'react-redux';
+import { searchVideo } from '../../actions/index';
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -12,14 +13,9 @@ class SearchContainer extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.input.value, 'submit');
+    // console.log(this.input.value, 'submit');
     // console.log(this.input.value);
-    this.props.dispatch({
-      type: 'SEARCH_VIDEO',
-      payload: {
-        query: this.input.value,
-      }
-    })
+    this.props.dispatch(searchVideo(this.input.value))
     // Aca se puede enviar todos los datos con un post
   }
 
