@@ -1,5 +1,6 @@
 import schema from '../schemas/index';
 import { fromJS } from 'immutable';
+import { SEARCH_VIDEO } from '../actions-types/index';
 // SE ESTA USANDO DE ESTA FORMA PORQUE SON DOS REDUCERS
 const initialState = fromJS({
   entities: schema.entities,
@@ -10,7 +11,7 @@ const initialState = fromJS({
 
 function data(state=initialState, action) {
   switch (action.type) {
-    case 'SEARCH_VIDEO': {
+    case SEARCH_VIDEO: {
       // action.payload.query;
       /*const list = state.data.categories[2].playlist;
       const results = list.filter((item) => {
