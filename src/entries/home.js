@@ -42,9 +42,12 @@ import { Map as map } from 'immutable';
   }
 }*/
 
-import logger from 'redux-logger'
+import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // mas middlewares -> https://github.com/xgrommx/awesome-redux
+//---------------------------------------------------
+import ReduxThunk from 'redux-thunk';
+// https://github.com/gaearon/redux-thunk
 
 const logger_ = ({ dispatch, getState }) => next => action => {
   console.log( 'estado anterior:', getState().toJS() )
@@ -58,7 +61,7 @@ const store = createStore(
   reducer,
   map(),
   composeWithDevTools(
-    applyMiddleware(logger, logger_),
+    applyMiddleware(logger, ReduxThunk),
   )
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, SEARCH_VIDEO } from '../actions-types/index';
+import { OPEN_MODAL, CLOSE_MODAL, SEARCH_VIDEO, SEARCH_ASYNC_VIDEO } from '../actions-types/index';
 
 export function openModal (mediaId) {
   return {
@@ -22,5 +22,17 @@ export function searchVideo (query) {
     payload: {
       query,
     }
+  }
+}
+
+// ReduxThunk
+export function searchAsyncVideo (query) {
+  return (dispatch) => {
+    //fetch(`http://miapi.com/buscar/${query}`).then((data)=>{
+    // dispatch(searchVideo(data))
+    // })
+    setTimeout(() => {
+      dispatch(searchVideo(query))
+    }, 5000);
   }
 }

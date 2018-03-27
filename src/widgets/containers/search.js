@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from '../components/search';
 import { connect } from 'react-redux';
-import { searchVideo } from '../../actions/index';
+import { searchVideo, searchAsyncVideo } from '../../actions/index';
 // import { bindActionCreators } from 'redux'
 
 class SearchContainer extends Component {
@@ -17,7 +17,12 @@ class SearchContainer extends Component {
     // console.log(this.input.value, 'submit');
     // console.log(this.input.value);
     // this.props.dispatch(searchVideo(this.input.value))
-    this.props.searchVideo(this.input.value)
+    // fetch(`http://miapi.com/buscar/${this.input.value}`).then((data)=>{
+    //    this.props.searchVideo(this.input.value)
+    // })
+    // this.props.searchVideo(this.input.value)
+    // ReduxThunk -> cargada como middleware
+    this.props.searchAsyncVideo(this.input.value)
     // Aca se puede enviar todos los datos con un post
   }
 
@@ -52,6 +57,7 @@ class SearchContainer extends Component {
 
 const mapDispatchToProps = {
   searchVideo,
+  searchAsyncVideo,
 }
 
 // Se recomienda usar connect dentro de los components de tipo containers
