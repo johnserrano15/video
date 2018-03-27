@@ -6,7 +6,7 @@ import Home from '../pages/containers/home';
 // import data from '../api.json';
 // import data from '../schemas/index';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducer from '../reducers/index';
 import { Map as map } from 'immutable'; 
 // import './app.sass';
@@ -29,10 +29,34 @@ import { Map as map } from 'immutable';
   // mas info de los spread operator -> http://www.etnassoft.com/2014/06/03/el-operador-de-propagacion-en-javascript-ecmascript-6-y-polyfill/
 }*/
 
+// Middlewares
+/*function logger({ dispatch, getState }){
+  return ( next ) => {
+    return ( action ) => {
+      console.log( 'estado anterior:', getState().toJS() )
+      console.log( 'enviando acción:', action)
+      const rslt = next( action )
+      console.log( 'nuevo estado   :', getState().toJS() )
+      return rslt
+    }
+  }
+}*/
+
+// https://github.com/xgrommx/awesome-redux
+
+const logger = ({ dispatch, getState }) => next => action => {
+  console.log( 'estado anterior:', getState().toJS() )
+  console.log( 'enviando acción:', action)
+  const rslt = next( action )
+  console.log( 'nuevo estado   :', getState().toJS() )
+  return rslt
+}
+
 const store = createStore(
   reducer,
   map(),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(logger)
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 // console.log(store.getState());
