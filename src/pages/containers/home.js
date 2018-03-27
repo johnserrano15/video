@@ -46,6 +46,7 @@ class Home extends Component {
             categories={this.props.categories}
             handleOpenModal={this.handleOpenModal}
             search={this.props.search}
+            isLoading={this.props.isLoading}
           />
           {
             // Si es true renderea el modalcontainer && es parecido a ? :
@@ -93,6 +94,7 @@ function mapStateToProps(state, props) {
     // search: state.data.search,
     search: searchResults,
     modal: state.get('modal'),
+    isLoading: state.get('isLoading').get('active'),
   }
 }
 

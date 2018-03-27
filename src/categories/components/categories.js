@@ -9,6 +9,10 @@ function Categories(props) {
     <div className="Categories">
       <Search />
       {
+        props.isLoading &&
+        <p>Buscando tus videos....</p>
+      }
+      {
         props.search.map((item) => {
           // return <Media {...item} key={item.id} />
           return (
